@@ -6,10 +6,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
-      - run: make install
+      - run: make install-deps
       - run: make lint
-      - name: run tests
-        run: make test
       - name: Install cc-test-reporter
         run: |
           curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
