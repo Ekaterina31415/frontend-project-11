@@ -7,6 +7,9 @@ install:
 build:
 	NODE_ENV=production npx webpack
 
+start:
+	npx webpack serve
+
 test:
 	npm test
 
