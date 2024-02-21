@@ -17,9 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
         state.feeds.push({ url });
         clearForm();
         updateFeedback('RSS успешно добавлен', true);
-        // Здесь может быть логика добавления фида
+        // Feed logic
       })
-      .catch(err => {
+      .catch((err) => {
         updateFeedback(err.message, false);
       });
   });
@@ -28,6 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const url = input.value;
     urlSchema(state.feeds).validate(url, { abortEarly: false })
       .then(() => updateFeedback('', true))
-      .catch(err => updateFeedback(err.message, false));
+      .catch((err) => updateFeedback(err.message, false));
   });
 });
