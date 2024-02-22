@@ -1,13 +1,10 @@
-export const updateFeedback = (message, isValid) => {
+import i18n from './i18next';
+
+export const updateFeedback = (messageKey, isValid) => {
   const feedbackElement = document.querySelector('.feedback');
-  feedbackElement.textContent = message;
-  if (isValid) {
-    feedbackElement.classList.remove('text-danger');
-    feedbackElement.classList.add('text-success');
-  } else {
-    feedbackElement.classList.remove('text-success');
-    feedbackElement.classList.add('text-danger');
-  }
+  feedbackElement.textContent = i18n.t(messageKey);
+  feedbackElement.classList.toggle('text-danger', !isValid);
+  feedbackElement.classList.toggle('text-success', isValid);
 };
 
 export const clearForm = () => {

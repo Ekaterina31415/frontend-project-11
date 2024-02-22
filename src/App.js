@@ -1,6 +1,7 @@
 import { makeState } from './state.js';
 import urlSchema from './validation.js';
 import { updateFeedback, clearForm } from './ui.js';
+import './i18next.js';
 
 const runApp = () => {
   document.addEventListener('DOMContentLoaded', () => {
@@ -17,11 +18,11 @@ const runApp = () => {
         .then(() => {
           state.feeds.push({ url });
           clearForm();
-          updateFeedback('RSS успешно добавлен', true);
+          updateFeedback('success', true);
           // Feed logic
         })
         .catch((err) => {
-          updateFeedback(err.message, false);
+          updateFeedback(err.errors[0], false);
         });
     });
 
@@ -29,9 +30,9 @@ const runApp = () => {
       const url = input.value;
       urlSchema(state.feeds).validate(url, { abortEarly: false })
         .then(() => updateFeedback('', true))
-        .catch((err) => updateFeedback(err.message, false));
+        .catch((err) => updateFeedback(err.errors[0], false));
     });
   });
-}
+};
 
 export default runApp;
