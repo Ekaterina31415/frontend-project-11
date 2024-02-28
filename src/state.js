@@ -1,6 +1,7 @@
 import onChange from 'on-change';
 
 export const initialState = {
+  processState: 'filling',
   formData: {
     url: '',
   },
